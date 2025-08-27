@@ -1,3 +1,6 @@
+# ------------------------------
+# Node / JavaScript (existing)
+# ------------------------------
 # Logs
 logs
 *.log
@@ -84,9 +87,7 @@ dist
 
 # Gatsby files
 .cache/
-# Comment in the public line in if your project uses Gatsby and not Next.js
-# https://nextjs.org/blog/next-9-1#public-directory-support
-# public
+# public   # Uncomment if using Gatsby (and not Next.js)
 
 # vuepress build output
 .vuepress/dist
@@ -137,3 +138,139 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# ------------------------------
+# Vue / Vite specific additions
+# ------------------------------
+# Vite cache (sometimes created in project root)
+.vite/
+
+# Vue CLI build outputs (already covered by /dist, but keep explicit)
+# dist/
+
+# Storybook (for Vue)
+storybook-static/
+.out/
+
+# Cypress / Playwright artifacts (common in Vue apps)
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+playwright-report/
+test-results/
+.playwright/
+
+# Local dev tools
+*.local
+
+# ------------------------------
+# Editor / OS miscellany
+# ------------------------------
+# VS Code workspace (keep common project files if you want)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# JetBrains / Rider
+.idea/
+*.iml
+
+# macOS / Windows
+.DS_Store
+Thumbs.db
+
+# ------------------------------
+# C# / .NET (Visual Studio / Rider)
+# ------------------------------
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+# Test results & coverage
+[Tt]est[Rr]esult*/
+[Tt]est[Rr]esults/
+*.coverage
+*.coveragexml
+
+# NuGet
+*.nupkg
+*.snupkg
+# packages/ is used in older projects (packages.config). If you still use it, uncomment:
+# packages/
+# except build/ within packages (keep targets/props if needed)
+# !packages/*/build/
+# !packages/*/build/**
+
+# MSBuild artifacts
+*.cache
+*.obj
+*.pdb
+*.ipch
+*.iobj
+*.pch
+*.ilk
+
+# Publish outputs
+app.publish/
+[Aa]rtifacts/
+publish/
+# Rider default publish dir
+**/bin/Release/net*/publish/
+
+# Entity Framework
+migrations/obj/
+
+# Azure Functions / local secrets
+local.settings.json
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# StyleCop / Sonar / analyzers
+StyleCopReport.xml
+.sonarqube/
+.scannerwork/
+
+# ReSharper / Rider caches
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Tye / Service Fabric / Containers (optional)
+.tye/
+
+# User-specific files (common SDK tooling)
+*.vc.db
+*.vscode.sqlite
+
+# ASP.NET IIS Express
+IISExpress.config
+
+# .NET Core generated files
+project.lock.json
+project.fragment.lock.json
+
+# Application settings (keep your base appsettings.json in source; ignore local overrides)
+appsettings.*.local.json
+App.config.user
+Web.config.user
+
+# ------------------------------
+# Docker (optional, if present)
+# ------------------------------
+# Uncomment if you generate these locally and don’t want them committed
+# docker-compose.override.yml
+# .docker/
+# **/.dockerignore

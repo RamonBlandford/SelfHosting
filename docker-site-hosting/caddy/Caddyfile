@@ -1,0 +1,60 @@
+{
+    # Dev: don’t fetch public certs
+    # auto_https off
+}
+
+# -------- Self Compassion Clinic --------
+https://selfcompassionclinic.com {
+    # Proxy anything under /api to your local API (adjust port!)
+    @api path /api*
+    handle @api {
+        reverse_proxy api_selfcompassion:5001
+    }
+
+    # Everything else = static Vue app
+    handle {
+        root * /srv/selfcompassion
+        file_server
+        # Vue Router history mode fallback
+        try_files {path} /index.html
+    }
+}
+
+
+# Redirect www to apex
+www.redshoestechnology.com {
+    redir https://redshoestechnology.com{uri} permanent
+}
+
+
+# -------- Red Shoes Technology --------
+https://redshoestechnology.com {
+    @api path /api*
+    handle @api {
+        reverse_proxy api_redshoes:5002
+    }
+
+    handle {
+        root * /srv/redshoes
+        file_server
+        try_files {path} /index.html
+    }
+}
+
+# -------- Self Compassion Clinic --------
+https://lydiabrown.com.au {
+    # Proxy anything under /api to your local API (adjust port!)
+    @api path /api*
+    handle @api {
+        reverse_proxy api_lydiabrown_com_au:5003
+    }
+
+    # Everything else = static Vue app
+    handle {
+        root * /srv/lydiabrown_com_au
+        file_server
+        # Vue Router history mode fallback
+        try_files {path} /index.html
+    }
+}
+

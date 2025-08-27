@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  caddy:
+    image: caddy:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./caddy:/etc/caddy:ro        # <— folder→folder avoids file/dir mismatch
+      - ./selfcompassionclinic/dist:/srv/selfcompassion:ro
+      - ./redshoestechnology/dist:/srv/redshoes:ro
+      - ./lydiabrown_com_au/dist:/srv/lydiabrown_com_au:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+
+      # Mount built Vue artefacts
+      - ./selfcompassionclinic/dist:/srv/selfcompassion:ro
+      - ./redshoestechnology/dist:/srv/redshoes:ro
+      - ./lydiabrown_com_au/dist:/srv/lydiabrown_com_au:ro
+
+      # Persist Caddy state (handy if you test TLS)
+      - caddy_data:/data
+      - caddy_config:/config
+
+
+  api_selfcompassion:
+    build: ./api-selfcompassion   # folder with Dockerfile + csproj
+    expose:
+      - "5001"
+
+  api_redshoes:
+    build: ./api-redshoes         # folder with Dockerfile + csproj
+    expose:
+      - "5002"
+
+  api_lydiabrown_com_au:
+    build: ./api-lydiabrown_com_au   # folder with Dockerfile + csproj
+    expose:
+      - "5003"
+
+
+volumes:
+  caddy_data:
+  caddy_config:
